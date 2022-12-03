@@ -16,7 +16,7 @@ spec:
     - type: prometheus 
       metadata: 
         # Required 
-        serverAddress: 
+        serverAddress: http://10.96.58.12:8080
         metricName: access_frequency 
-        threshold: '300'
-        query: rate(container_cpu_usage_seconds_total{pod=~"mywebapp-.*", image!="", container_name!="POD"}[2m])
+        threshold: '0.020'
+        query: rate(container_cpu_usage_seconds_total{namespace="default"}[1m])

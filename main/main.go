@@ -7,8 +7,8 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	x := 0.01
-	for i := 0; i <= 1000; i++ {
+	x := 0.001
+	for i := 0; i <= 100000; i++ {
 		x += math.Sqrt(x)
 	}
 	w.Write([]byte("Kapcsolat!"))
@@ -16,5 +16,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	log.Fatal(http.ListenAndServe(":5001", nil))
 }

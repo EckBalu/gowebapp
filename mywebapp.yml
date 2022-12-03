@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mywebapp
-        image: registry.k8s.io/hpa-example
+        image: eckbalu/mywebapp
         ports:
         - containerPort: 80
         resources:
