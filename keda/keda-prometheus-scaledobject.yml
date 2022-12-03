@@ -8,8 +8,8 @@ metadata:
 spec: 
   scaleTargetRef: 
     name: mywebapp
-  pollingInterval: 10 # Optional. Default: 30 seconds 
-  cooldownPeriod: 15 # Optional. Default: 300 seconds 
+  pollingInterval: 1 # Optional. Default: 30 seconds 
+  cooldownPeriod: 1 # Optional. Default: 300 seconds 
   minReplicaCount: 1 # Optional. Default: 0 
   maxReplicaCount: 10 # Optional. Default: 100 
   triggers: 
@@ -18,5 +18,5 @@ spec:
         # Required 
         serverAddress: http://10.96.58.12:8080
         metricName: access_frequency 
-        threshold: '0.020'
-        query: rate(container_cpu_usage_seconds_total{namespace="default"}[1m])
+        threshold: '0.005'
+        query: rate(container_cpu_usage_seconds_total{namespace="default"}[50s])

@@ -22,7 +22,7 @@ apply:
 	kubectl get services | grep mywebapp
 
 test:
-	curl 10.99.161.93:5001/
+	curl 10.100.2.40:5001/
 
 local-run:
 	ENDPOINT=http://localhost:5001/ k6 run performance-test.js
@@ -31,4 +31,4 @@ local-influx-run:
 	ENDPOINT=http://localhost:5001/ k6 run -o influxdb=http://localhost:8086/k6 performance-test.js
 
 run:
-	ENDPOINT=http://10.99.161.93:5001/ k6 run -o influxdb=http://localhost:8086/k6 performance-test.js
+	ENDPOINT=http://10.100.2.40:5001/ k6 run -o influxdb=http://localhost:8086/k6 performance-test.js
