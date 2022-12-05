@@ -7,11 +7,11 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	x := 0.05481
+	x := 0.005481
 	for i := 0; i <= 1000000; i++ {
 		x += math.Sqrt(x)
 	}
-	w.Write([]byte("Kapcsolat!"))
+	w.Write([]byte("Connected, calculated!"))
 }
 
 func main() {

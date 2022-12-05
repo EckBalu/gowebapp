@@ -8,15 +8,25 @@ metadata:
 spec: 
   scaleTargetRef: 
     name: mywebapp
-  pollingInterval: 30 # Optional. Default: 30 seconds 
-  cooldownPeriod: 300 # Optional. Default: 300 seconds 
+  pollingInterval: 10 # Optional. Default: 30 seconds 
+  cooldownPeriod: 15 # Optional. Default: 300 seconds 
   minReplicaCount: 1 # Optional. Default: 0 
   maxReplicaCount: 10 # Optional. Default: 100 
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 60
+          policies:
+          - type: Percent
+            value: 100
+            periodSeconds: 60
   triggers: 
     - type: prometheus 
       metadata: 
         # Required 
         serverAddress: http://10.96.58.12:8080
-        metricName: access_frequency 
+        metricName: container_cpu_usage
         threshold: '0.050'
+        activationThreshold: '0.005'
         query: rate(container_cpu_usage_seconds_total{namespace="default"}[50s])

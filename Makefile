@@ -21,6 +21,14 @@ apply:
 	kubectl apply -f deploy/mywebapp-deploy.yml
 	kubectl get services | grep mywebapp
 
+apply-keda:
+	kubectl apply -f keda/keda-prometheus-scaledobject.yml
+	kubectl get hpa
+
+apply-keda-cpu:
+	kubectl apply -f keda/keda-cpu-scaledobject.yml
+	kubectl get hpa
+
 test:
 	curl 10.100.2.40:5001/
 
